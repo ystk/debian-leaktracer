@@ -7,7 +7,8 @@ SRC := LeakTracer.cc
 THREAD=-DTHREAD_SAVE -D_REENTRANT -D_THREAD_SAFE -pthread 
 
 # Common flags
-C_FLAGS = -g -pipe -Wall -W $(THREAD)
+CFLAGS = -g -Wall -W
+C_FLAGS = $(CFLAGS) -pipe $(THREAD)
 O_FLAGS = $(C_FLAGS)
 
 # Object files
@@ -21,6 +22,9 @@ all: $(OBJ) $(SHOBJ)
 
 clean:	tidy 
 	rm -f $(OBJ) leak.out
+
+realclean: clean
+	rm -f test *.so
 
 tidy:
 	rm -f *~ *orig *bak *rej

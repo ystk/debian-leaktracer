@@ -8,7 +8,7 @@ fi
 # LeakCheck script resides; modify to your
 # needs:
 SHLIB=`dirname $0`/LeakTracer.so
-if [ ! -x $SHLIB ] ; then
+if [ ! -r $SHLIB ] ; then
     echo "$SHLIB not found"
     exit 1
 fi
